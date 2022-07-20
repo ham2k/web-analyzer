@@ -51,7 +51,7 @@ export function AnalysisPage() {
   const navigate = useNavigate()
 
   const { logKey } = useParams()
-  console.log(logKey)
+
   useEffect(() => {
     dispatch(setCurrentContestLog(logKey))
   }, [dispatch, logKey])
