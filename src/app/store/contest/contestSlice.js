@@ -35,15 +35,15 @@ export const contestSlice = createSlice({
 
       state.qson = qson
       state.qsos = qson.qsos
-      state.ref = qson.refs.filter((ref) => ref.contest)[0] || {}
-      state.rawCabrillo = qson.rawCabrillo
+      state.ref = qson.common.refs.filter((ref) => ref.type === "contest")[0] || {}
+      state.rawHeaders = qson.rawHeaders
     },
 
     resetContest: (state, action) => {
       state.qson = undefined
       state.qsos = []
       state.ref = undefined
-      state.rawCabrillo = undefined
+      state.rawHeaders = undefined
     },
   },
 })

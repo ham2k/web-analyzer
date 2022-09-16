@@ -23,7 +23,7 @@ export function LogsList({ classes }) {
           Available Contest Logs
         </Typography>
 
-        <table class={classNames(classes.niceTable, classes.table)} width="100%">
+        <table className={classNames(classes.niceTable, classes.table)} width="100%">
           <tbody>
             {logs.map((log, index) => (
               <tr key={log.key}>
@@ -46,6 +46,13 @@ export function LogsList({ classes }) {
       </div>
     )
   } else {
-    return <div>You have not loaded any logs yet</div>
+    return (
+      <div>
+        <p>You have not loaded any logs yet</p>
+        <p>
+          <LogLoader title={"Add a Cabrillo file"} />
+        </p>
+      </div>
+    )
   }
 }

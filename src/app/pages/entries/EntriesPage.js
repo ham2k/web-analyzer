@@ -71,24 +71,26 @@ export function EntriesPage() {
   const navigate = useNavigate()
 
   const { logKey } = useParams()
-  console.log(logKey)
+
   useEffect(() => {
     dispatch(setCurrentContestLog(logKey))
   }, [dispatch, logKey])
 
   const log = useSelector(selectCurrentContestLog)
   const qson = useMemo(() => log?.qson || {}, [log])
-  const ref = useMemo(() => log?.qson?.refs && log?.qson.refs.find((ref) => ref.contest), [log])
+  const ref = useMemo(
+    () => log?.qson?.common.refs && log?.qson.common.refs.find((ref) => ref.type === "contest"),
+    [log]
+  )
   const qsos = useMemo(() => log?.qson?.qsos || [], [log])
   const overrides = useSelector(selectLogOverrides(log.key))
 
-  const contestRef = useMemo(() => qson?.refs && qson.refs.find((ref) => ref.contest), [qson])
+  const contestRef = useMemo(() => qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest"), [qson])
   const contest = useMemo(() => {
-    const contest = ref && findContestInfoForId(ref.contest, { near: qson.qsos[0].start })
+    const contest = ref && findContestInfoForId(ref.ref, { near: qson.qsos[0].start })
     contest && contest.score(qson)
     return contest
   }, [qson, ref])
-  console.log(qsos[0])
 
   const ourExchange = useMemo(() => {
     if (!qson.qsos[0]) return []

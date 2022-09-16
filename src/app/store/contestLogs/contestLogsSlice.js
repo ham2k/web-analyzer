@@ -57,8 +57,8 @@ export const loadCabrilloLog = (data) => (dispatch) => {
       annotateFromCountryFile(qso.their)
     })
 
-    const contestRef = qson?.refs && qson.refs.find((ref) => ref.contest)
-    const contestInfo = contestRef && findContestInfoForId(contestRef.contest, { near: qson.qsos[0].start })
+    const contestRef = qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest")
+    const contestInfo = contestRef && findContestInfoForId(contestRef.ref, { near: qson.qsos[0].start })
     contestInfo?.score(qson)
 
     const key = generateContestLogKey({ qson, contestInfo, contestRef })

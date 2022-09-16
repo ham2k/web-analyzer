@@ -58,19 +58,21 @@ export function AnalysisPage() {
 
   const log = useSelector(selectCurrentContestLog)
   const qson = useMemo(() => log?.qson || {}, [log])
-  const ref = useMemo(() => log?.qson?.refs && log?.qson.refs.find((ref) => ref.contest), [log])
+  const ref = useMemo(
+    () => log?.qson?.common.refs && log?.qson.common.refs.find((ref) => ref.type === "contest"),
+    [log]
+  )
   const qsos = useMemo(() => log?.qson?.qsos || [], [log])
   const overrides = useSelector(selectLogOverrides(logKey))
 
-  const contestRef = useMemo(() => qson?.refs && qson.refs.find((ref) => ref.contest), [qson])
+  const contestRef = useMemo(() => qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest"), [qson])
   const contest = useMemo(() => {
-    const contest = ref && findContestInfoForId(ref.contest, { near: qson.qsos[0].start })
+    const contest = ref && findContestInfoForId(ref.ref, { near: qson.qsos[0].start })
     contest && contest.score(qson)
     return contest
   }, [qson, ref])
 
   const analysis = useMemo(() => analyzeAll(qson), [qson])
-
   if (!analysis || !ref || !contest) {
     return null
   }
