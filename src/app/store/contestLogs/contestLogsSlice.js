@@ -58,7 +58,7 @@ export const loadCabrilloLog = (data) => (dispatch) => {
     })
 
     const contestRef = qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest")
-    const contestInfo = contestRef && findContestInfoForId(contestRef.ref, { near: qson.qsos[0].start })
+    const contestInfo = contestRef && findContestInfoForId(contestRef.ref, { near: qson.qsos[0]?.start })
     contestInfo?.score(qson)
 
     const key = generateContestLogKey({ qson, contestInfo, contestRef })

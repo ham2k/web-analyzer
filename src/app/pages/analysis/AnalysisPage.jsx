@@ -64,8 +64,11 @@ export function AnalysisPage() {
   )
   const qsos = useMemo(() => log?.qson?.qsos || [], [log])
   const overrides = useSelector(selectLogOverrides(logKey))
-
-  const contestRef = useMemo(() => qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest"), [qson])
+  console.log(qson)
+  const contestRef = useMemo(
+    () => qson?.common?.refs && qson.common?.refs.find((ref) => ref.type === "contest"),
+    [qson]
+  )
   const contest = useMemo(() => {
     const contest = ref && findContestInfoForId(ref.ref, { near: qson.qsos[0].start })
     contest && contest.score(qson)

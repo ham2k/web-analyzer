@@ -18,7 +18,7 @@ export function HomePage() {
   const classes = useStyles()
 
   return (
-    <div class={classes.root}>
+    <div className={classes.root}>
       <LogsList classes={classes} />
       <hr />
       <h1>Welcome to Ham2K Contest Analyzer</h1>
