@@ -11,8 +11,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import commonStyles from "../../styles/common"
 
 import { findContestInfoForId } from "@ham2k/data/contests"
-import { fmtDateMonthYear, fmtMinutesAsHM } from "../../../utils/format/dateTime"
-import { fmtInteger, fmtOneDecimal } from "../../../utils/format/number"
+import { fmtDateMonthYear, fmtMinutesAsHM, fmtInteger, fmtOneDecimal } from "@ham2k/util/format"
 
 import analyzeAll from "../../../analysis/analyzer"
 

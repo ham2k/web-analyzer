@@ -1,5 +1,5 @@
 import React from "react"
-import { fmtContestTimestampZulu } from "../../../../utils/format/dateTime"
+import { fmtContestTimestampZulu } from "@ham2k/util/format"
 import ApexChart from "react-apexcharts"
 import SunCalc from "suncalc"
 import Maidenhead from "maidenhead"

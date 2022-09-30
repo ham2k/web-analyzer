@@ -3,7 +3,7 @@ import { Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import commonStyles from "../../../styles/common"
 import classNames from "classnames"
-import { fmtInteger, fmtOneDecimal } from "../../../../utils/format/number"
+import { fmtInteger, fmtOneDecimal } from "@ham2k/util/format"
 
 const styles = {
   table: {
