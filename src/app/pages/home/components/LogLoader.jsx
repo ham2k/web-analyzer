@@ -11,14 +11,17 @@ export function LogLoader({ title, classes }) {
   const navigate = useNavigate()
 
   const handleFileSelected = (event) => {
-    const file = event.target.files[0]
-    const reader = new FileReader()
-    reader.onload = () => {
-      dispatch(loadCabrilloLog(reader.result)).then((data) => {
-        navigate(`/contest/${data.key}`)
-      })
+    if (event.target.value) {
+      const file = event.target.files[0]
+      const reader = new FileReader()
+      reader.onload = () => {
+        dispatch(loadCabrilloLog(reader.result)).then((data) => {
+          navigate(`/contest/${data.key}`)
+        })
+      }
+      reader.readAsText(file)
+      event.target.value = null
     }
-    reader.readAsText(file)
   }
 
   return (
