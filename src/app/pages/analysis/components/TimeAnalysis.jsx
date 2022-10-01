@@ -4,7 +4,6 @@ import Maidenhead from "maidenhead"
 import SunCalc from "suncalc"
 
 import { fmtContestTimestampZulu, fmtDateTime, fmtMinutesAsHM, fmtInteger, fmtPercent } from "@ham2k/util/format"
-import { constants } from "buffer"
 
 export function TimeAnalysis({ qson, analysis, contest, contestRef, overrides }) {
   const contestPeriodInfo = useMemo(() => {

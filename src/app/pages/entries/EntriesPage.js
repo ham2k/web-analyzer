@@ -13,12 +13,7 @@ import commonStyles from "../../styles/common"
 import { findContestInfoForId } from "@ham2k/data/contests"
 import { fmtDateMonthYear, fmtContestTimestampZulu, fmtInteger } from "@ham2k/util/format"
 
-import {
-  resetCurrentContestLog,
-  selectCurrentContestLog,
-  selectLogOverrides,
-  setCurrentContestLog,
-} from "../../store/contestLogs"
+import { resetCurrentContestLog, selectCurrentContestLog, setCurrentContestLog } from "../../store/contestLogs"
 import classNames from "classnames"
 import { camelCaseToTitleCase } from "@ham2k/util/format"
 
@@ -82,9 +77,9 @@ export function EntriesPage() {
     [log]
   )
   const qsos = useMemo(() => log?.qson?.qsos || [], [log])
-  const overrides = useSelector(selectLogOverrides(log.key))
+  // const overrides = useSelector(selectLogOverrides(log.key))
 
-  const contestRef = useMemo(() => qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest"), [qson])
+  // const contestRef = useMemo(() => qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest"), [qson])
   const contest = useMemo(() => {
     const contest = ref && findContestInfoForId(ref.ref, { near: qson.qsos[0].start })
     contest && contest.score(qson)
