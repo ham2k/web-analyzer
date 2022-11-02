@@ -1,10 +1,10 @@
 {
-  "root": "apps/analyzer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/analyzer/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
@@ -34,11 +34,17 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         }
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nrwl/webpack:dev-server",
       "options": {
         "buildTarget": "analyzer:build",
         "hmr": true,
@@ -48,8 +54,12 @@
         "production": {
           "buildTarget": "analyzer:build:production",
           "hmr": false
+        },
+        "development": {
+          "buildTarget": "analyzer:build:development"
         }
-      }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -60,9 +70,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/analyzer"],
+      "outputs": ["{workspaceRoot}/coverage/apps/analyzer"],
       "options": {
-        "jestConfig": "apps/analyzer/jest.config.js",
+        "jestConfig": "apps/analyzer/jest.config.ts",
         "passWithNoTests": true
       }
     }
