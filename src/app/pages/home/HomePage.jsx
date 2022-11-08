@@ -1,25 +1,20 @@
-import { makeStyles } from "@mui/styles"
+import { Box } from "@mui/material"
 import * as React from "react"
-import commonStyles from "../../styles/common"
 import { LogsList } from "./components/LogsList"
 
-const useStyles = makeStyles((theme) => ({
-  ...commonStyles(theme),
-
+const styles = {
   root: {
     "& h2": {
       marginTop: "1em",
       borderBottom: "2px solid #333",
     },
   },
-}))
+}
 
 export function HomePage() {
-  const classes = useStyles()
-
   return (
-    <div className={classes.root}>
-      <LogsList classes={classes} />
+    <Box sx={styles.root}>
+      <LogsList />
       <hr />
       <h1>Welcome to Ham2K Contest Analyzer</h1>
       <p>Your files will be processed locally on your own browser, nothing will be uploaded anywhere.</p>
@@ -30,6 +25,6 @@ export function HomePage() {
         <li>QSO Parties: North America, NY</li>
       </ul>
       We'll be adding more soon.
-    </div>
+    </Box>
   )
 }

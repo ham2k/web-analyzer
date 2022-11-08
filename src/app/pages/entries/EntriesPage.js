@@ -3,12 +3,9 @@ import React, { useEffect, useMemo } from "react"
 
 import { Button, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
-import { makeStyles } from "@mui/styles"
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 
 import { useNavigate, useParams } from "react-router-dom"
-
-import commonStyles from "../../styles/common"
 
 import { findContestInfoForId } from "@ham2k/data/contests"
 import { fmtDateMonthYear, fmtContestTimestampZulu, fmtInteger } from "@ham2k/util/format"
@@ -16,10 +13,9 @@ import { fmtDateMonthYear, fmtContestTimestampZulu, fmtInteger } from "@ham2k/ut
 import { resetCurrentContestLog, selectCurrentContestLog, setCurrentContestLog } from "../../store/contestLogs"
 import classNames from "classnames"
 import { camelCaseToTitleCase } from "@ham2k/util/format"
+import { Box } from "@mui/system"
 
-const useStyles = makeStyles((theme) => ({
-  ...commonStyles(theme),
-
+const styles = {
   root: {
     "& h2": {
       marginTop: "1em",
@@ -27,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  table: {
+  "& .table": {
     width: "inherit important!",
     marginTop: "0.5em",
     "& th": {
@@ -57,10 +53,9 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "right",
     },
   },
-}))
+}
 
 export function EntriesPage() {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -117,7 +112,7 @@ export function EntriesPage() {
   }
 
   return (
-    <section className={classes.root}>
+    <Box component="section" sx={styles.root}>
       <Typography component="h1" variant="h3">
         <div style={{ float: "right" }}>
           <Button
@@ -141,7 +136,7 @@ export function EntriesPage() {
       </Typography>
 
       <h2>QSOs</h2>
-      <table className={classNames(classes.niceTable, classes.table, classes.bandColors)}>
+      <table className={"table nice-table band-colors"}>
         <thead>
           <tr>
             <th className="col-number">#</th>
@@ -196,7 +191,7 @@ export function EntriesPage() {
           ))}
         </tbody>
       </table>
-    </section>
+    </Box>
   )
 }
 

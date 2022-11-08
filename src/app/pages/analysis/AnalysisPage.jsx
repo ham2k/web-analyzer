@@ -1,14 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useMemo } from "react"
 
-import { Button, Link, Typography } from "@mui/material"
+import { Box, Button, Link, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
-import { makeStyles } from "@mui/styles"
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 
 import { useNavigate, useParams } from "react-router-dom"
-
-import commonStyles from "../../styles/common"
 
 import { findContestInfoForId } from "@ham2k/data/contests"
 import { fmtDateMonthYear, fmtMinutesAsHM, fmtInteger, fmtOneDecimal } from "@ham2k/util/format"
@@ -33,19 +30,16 @@ import {
   setCurrentContestLog,
 } from "../../store/contestLogs"
 
-const useStyles = makeStyles((theme) => ({
-  ...commonStyles(theme),
-
+const styles = {
   root: {
     "& h2": {
       marginTop: "1em",
       borderBottom: "2px solid #333",
     },
   },
-}))
+}
 
 export function AnalysisPage() {
-  const classes = useStyles()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -89,7 +83,7 @@ export function AnalysisPage() {
   }
 
   return (
-    <section className={classes.root}>
+    <Box component="section" sx={styles.root}>
       <Typography component="h1" variant="h3">
         <div style={{ float: "right" }}>
           <Button
@@ -136,6 +130,6 @@ export function AnalysisPage() {
       <TopTenCallsigns calls={analysis.calls.calls} />
       <TopTenCQZones cqZones={analysis.calls.cqZones} />
       <TopTenITUZones ituZones={analysis.calls.ituZones} />
-    </section>
+    </Box>
   )
 }

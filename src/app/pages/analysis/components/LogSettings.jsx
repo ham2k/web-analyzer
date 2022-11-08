@@ -1,20 +1,12 @@
 import React from "react"
 import { Autocomplete, Grid, FormLabel, TextField, Typography } from "@mui/material"
-import { makeStyles } from "@mui/styles"
 
 import { DateTime } from "luxon"
 import tzdata from "tzdata"
 
-import commonStyles from "../../../styles/common"
 import { setPerCallSettings } from "../../../store/settings"
 import { useDispatch } from "react-redux"
 import { setLogOverrides } from "../../../store/contestLogs"
-
-const styles = {
-  root: {},
-}
-
-const useStyles = makeStyles((theme) => ({ ...commonStyles(theme), ...styles }))
 
 // const LuxonTimezones = Object.entries(tzdata.zones)
 //   .filter(([zoneName, v]) => Array.isArray(v))
@@ -23,7 +15,6 @@ const useStyles = makeStyles((theme) => ({ ...commonStyles(theme), ...styles }))
 
 export function LogSettings({ log, overrides, contestRef }) {
   const dispatch = useDispatch()
-  const classes = useStyles()
 
   const handleGridChange = (event) => {
     overrides.grid = event.target.value

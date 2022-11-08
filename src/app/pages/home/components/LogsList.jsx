@@ -1,5 +1,4 @@
 import { Link, Typography } from "@mui/material"
-import classNames from "classnames"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -7,7 +6,7 @@ import { fmtDateMonthYear } from "@ham2k/util/format"
 import { fetchContestLogList, selectContestLogList } from "../../../store/contestLogs"
 import { LogLoader } from "./LogLoader"
 
-export function LogsList({ classes }) {
+export function LogsList() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchContestLogList())
@@ -23,7 +22,7 @@ export function LogsList({ classes }) {
           Available Contest Logs
         </Typography>
 
-        <table className={classNames(classes.niceTable, classes.table)} width="100%">
+        <table className={"table nice-table"} width="100%">
           <tbody>
             {logs.map((log, index) => (
               <tr key={log.key}>

@@ -5,12 +5,12 @@ import { Link as RouterLink } from "react-router-dom"
 
 import { AppBar, Container, CssBaseline, Link, responsiveFontSizes, Toolbar, Typography } from "@mui/material"
 
-import { makeStyles } from "@mui/styles"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 import commonStyles from "./styles/common"
 
 import { ContentRoutes } from "./routes"
+import { Box } from "@mui/system"
 
 const MuiToRouterLinkTranslator = forwardRef((props, ref) => {
   const { href, ...other } = props
@@ -42,10 +42,10 @@ let baseTheme = createTheme({
 })
 baseTheme = responsiveFontSizes(baseTheme)
 
-const useStyles = makeStyles((theme) => ({
-  ...commonStyles(theme),
-
+const styles = {
   root: {
+    ...commonStyles,
+
     position: "absolute",
     top: 0,
     right: 0,
@@ -78,32 +78,15 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     justifyContent: "space-around",
-    [theme.breakpoints.up("xs")]: {
-      paddingLeft: theme.spacing(0.5),
-      paddingRight: theme.spacing(0.5),
-    },
-    [theme.breakpoints.up("sm")]: {
-      paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3),
-    },
+    pl: { xs: 0.5, sm: 1, lg: 3 },
+    pr: { xs: 0.5, sm: 1, lg: 3 },
   },
 
   footer: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-
-    [theme.breakpoints.down("xs")]: {
-      paddingTop: theme.spacing(0.5),
-      paddingBottom: theme.spacing(0.5),
-      paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
-    },
+    pt: { xs: 0.5, sm: 1 },
+    pb: { xs: 0.5, sm: 1 },
+    pl: { xs: 1, sm: 2 },
+    pr: { xs: 1, sm: 2 },
 
     textAlign: "center",
   },
@@ -112,9 +95,9 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
   },
   content: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    paddingLeft: theme.spacing(4),
+    pt: 2,
+    pb: 2,
+    pl: 4,
     "& h1": {
       fontWeight: "500 !important",
     },
@@ -123,37 +106,35 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: "300 !important",
     },
   },
-}))
+}
 
 export function App() {
-  const classes = useStyles()
-
   return (
-    <div className={classes.root}>
+    <Box sx={styles.root}>
       <AppBar position="static" role="banner">
-        <Toolbar className={classes.toolbar}>
+        <Toolbar sx={styles.toolbar}>
           <div>
-            <Typography component="h1" variant="h4" color="inherit" noWrap className={classes.titleMain}>
+            <Typography component="h1" variant="h4" color="inherit" noWrap sx={styles.titleMain}>
               <Link href="/" underline="hover" color="inherit" noWrap>
                 <i>Ham2K</i> Contest Analyzer
               </Link>
             </Typography>
-            <Typography component="div" color="inherit" noWrap className={classes.version}>
+            <Typography component="div" color="inherit" noWrap sx={styles.version}>
               v0.1
             </Typography>
           </div>
         </Toolbar>
       </AppBar>
-      <div className={classes.contentWrapper}>
-        <Container className={classes.content}>
+      <Box sx={styles.contentWrapper}>
+        <Container sx={styles.content}>
           <ContentRoutes />
         </Container>
-      </div>
-      <footer className={classes.footer}>
+      </Box>
+      <Box component="footer" sx={styles.footer}>
         <b>Ham2K Contest Analyzer</b> developed by <a href="https://www.qrz.com/db/KI2D">KI2D</a> Sebastian Delmont{" "}
         <a href="https://twitter.com/sd">@sd</a> - v0.1
-      </footer>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

@@ -1,55 +1,51 @@
 import React from "react"
-import { Typography } from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import commonStyles from "../../../styles/common"
-import classNames from "classnames"
+import { Box, Typography } from "@mui/material"
 import { fmtInteger, fmtOneDecimal } from "@ham2k/util/format"
 
 const styles = {
-  table: {
-    width: "inherit important!",
-    marginTop: "0.5em",
-    maxWidth: "15em",
-    "& th": {
-      textAlign: "right",
-    },
-    "& td": {
-      textAlign: "right",
-    },
-    "& .band": {
-      textAlign: "right",
-      maxWidth: "4em",
-    },
-    "& .qsos": {
-      textAlign: "right",
-    },
-    "& .percent": {
-      textAlign: "right",
-      width: "3em",
-      fontSize: "80%",
-    },
-    "& tr.totals td": {
-      fontWeight: "bold",
+  root: {
+    "& .table": {
+      width: "inherit important!",
+      marginTop: "0.5em",
+      maxWidth: "15em",
+      "& th": {
+        textAlign: "right",
+      },
+      "& td": {
+        textAlign: "right",
+      },
+      "& .band": {
+        textAlign: "right",
+        maxWidth: "4em",
+      },
+      "& .qsos": {
+        textAlign: "right",
+      },
+      "& .percent": {
+        textAlign: "right",
+        width: "3em",
+        fontSize: "80%",
+      },
+      "& tr.totals td": {
+        fontWeight: "bold",
+      },
     },
   },
 }
 
-const useStyles = makeStyles((theme) => ({ ...commonStyles(theme), ...styles }))
-
 export function LogSummary({ qson, analysis, contest }) {
-  const classes = useStyles()
   const bands = contest.bands
 
   const multNames = contest.multipliers || []
   const contestSummary = contest.scoringResults?.summary || {}
 
   return (
-    <div className={classes.root}>
+    <Box sx={styles.root}>
       <Typography component="h2" variant="h5">
         Summary
       </Typography>
 
-      <table className={classNames(classes.niceTable, classes.table, classes.bandColors)}>
+      <table className="table nice-table band-colors">
         <thead>
           <tr>
             <th className="band">Band</th>
@@ -176,6 +172,6 @@ export function LogSummary({ qson, analysis, contest }) {
           </tr>
         </tbody>
       </table>
-    </div>
+    </Box>
   )
 }
