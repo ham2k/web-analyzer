@@ -11,6 +11,7 @@ import commonStyles from "./styles/common"
 
 import { ContentRoutes } from "./routes"
 import { Box } from "@mui/system"
+import { GitHub, Radio } from "@mui/icons-material"
 
 const MuiToRouterLinkTranslator = forwardRef((props, ref) => {
   const { href, ...other } = props
@@ -131,8 +132,16 @@ export function App() {
         </Container>
       </Box>
       <Box component="footer" sx={styles.footer}>
-        <b>Ham2K Contest Analyzer</b> developed by <a href="https://www.qrz.com/db/KI2D">KI2D</a> Sebastian Delmont{" "}
-        <a href="https://twitter.com/sd">@sd</a> - v0.1
+        <Radio fontSize="small" sx={{ verticalAlign: "baseline", position: "relative", top: "2px" }} />{" "}
+        <span title={`${window.currentEnv} ${window.currentCommit.substr(0, 7)}`}>
+          Ham2k <b>Marathon Tools</b>
+        </span>
+        &nbsp;&nbsp;•&nbsp;&nbsp; Developed by <a href="https://www.qrz.com/db/KI2D">KI2D</a> - Sebastian Delmont{" "}
+        <a href="https://twitter.com/sd">@sd</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <GitHub fontSize="small" sx={{ verticalAlign: "baseline", position: "relative", top: "4px" }} />
+        &nbsp;
+        <a href="https://github.com/ham2k/ham2k">github.com/ham2k</a>
       </Box>
     </Box>
   )
