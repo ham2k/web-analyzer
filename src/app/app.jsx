@@ -19,6 +19,14 @@ const MuiToRouterLinkTranslator = forwardRef((props, ref) => {
   return <RouterLink ref={ref} to={href} {...other} />
 })
 
+window.currentCommit = window?.ENV?.COMMIT
+window.currentEnv = window?.ENV?.NODE_ENV
+window.currentURL = window?.ENV?.URL
+
+if (window.currentCommit === "%NX_COMMIT%") window.currentCommit = ""
+if (window.currentEnv === "%NODE_ENV%") window.currentEnv = "unknown"
+if (window.currentURL === "%NX_URL%") window.currentURL = ""
+
 /* https://material.io/resources/color/ */
 let baseTheme = createTheme({
   palette: {
@@ -133,8 +141,8 @@ export function App() {
       </Box>
       <Box component="footer" sx={styles.footer}>
         <Radio fontSize="small" sx={{ verticalAlign: "baseline", position: "relative", top: "2px" }} />{" "}
-        <span title={`${window.currentEnv} ${window.currentCommit.substr(0, 7)}`}>
-          Ham2k <b>Marathon Tools</b>
+        <span title={`${window.currentEnv} ${window.currentCommit && window.currentCommit.substr(0, 7)}`}>
+          Ham2k <b>Analyzer</b>
         </span>
         &nbsp;&nbsp;•&nbsp;&nbsp; Developed by <a href="https://www.qrz.com/db/KI2D">KI2D</a> - Sebastian Delmont{" "}
         <a href="https://twitter.com/sd">@sd</a>
