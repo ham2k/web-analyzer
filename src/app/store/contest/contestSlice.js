@@ -35,7 +35,7 @@ export const contestSlice = createSlice({
 
       state.qson = qson
       state.qsos = qson.qsos
-      state.ref = qson.common.refs.filter((ref) => ref.type === "contest")[0] || {}
+      state.ref = qson.common.refs.filter((ref) => ref.type === "contest")[0] ?? {}
       state.rawHeaders = qson.rawHeaders
     },
 

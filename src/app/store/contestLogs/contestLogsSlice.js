@@ -38,7 +38,7 @@ export const contestLogsSlice = createSlice({
       state.logs = action.payload
     },
     setLogOverrides: (state, action) => {
-      state.overrides = state.overrides || {}
+      state.overrides = state.overrides ?? {}
       state.overrides[action.payload.key] = action.payload
     },
   },
@@ -126,7 +126,7 @@ export const selectCurrentContestLog = (state) => {
 }
 
 export const selectLogOverrides = (key) => (state) => {
-  return (state?.contestLogs?.overrides && state?.contestLogs?.overrides[key]) || {}
+  return (state?.contestLogs?.overrides && state?.contestLogs?.overrides[key]) ?? {}
 }
 
 export default contestLogsSlice.reducer

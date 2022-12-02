@@ -33,7 +33,7 @@ export function LogLoader({ title, classes }) {
       onChange={handleFileSelected}
       size="medium"
     >
-      {title || "Load Cabrillo file"}
+      {title ?? "Load Cabrillo file"}
       <input type="file" hidden />
     </Button>
   )

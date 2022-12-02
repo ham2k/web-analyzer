@@ -8,7 +8,7 @@ import { fmtContestTimestampZulu, fmtDateTime, fmtMinutesAsHM, fmtInteger, fmtPe
 export function TimeAnalysis({ qson, analysis, contest, contestRef, overrides }) {
   const contestPeriodInfo = useMemo(() => {
     const info = { periods: [], total: 0 }
-    info.periods = contest?.periods || []
+    info.periods = contest?.periods ?? []
     info.totalMinutes = Math.round(
       contest.periods.reduce((acc, period) => {
         return acc + (Date.parse(period[1]) - Date.parse(period[0])) / 1000 / 60
@@ -19,7 +19,7 @@ export function TimeAnalysis({ qson, analysis, contest, contestRef, overrides })
 
   const grid = new Maidenhead()
   try {
-    grid.locator = overrides?.grid || contestRef?.grid
+    grid.locator = overrides?.grid ?? contestRef?.grid
   } catch (error) {
     // Ignore grid location
   }

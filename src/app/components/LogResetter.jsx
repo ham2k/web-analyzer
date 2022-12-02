@@ -17,11 +17,11 @@ export function LogResetter({ variant, color, size }) {
 
   return (
     <Button
-      variant={variant || "outlined"}
-      color={color || "primary"}
+      variant={variant ?? "outlined"}
+      color={color ?? "primary"}
       startIcon={<ClearIcon />}
       onClick={handleClick}
-      size={size || "medium"}
+      size={size ?? "medium"}
     >
       Reset
     </Button>

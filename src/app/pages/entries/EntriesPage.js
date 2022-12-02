@@ -66,12 +66,12 @@ export function EntriesPage() {
   }, [dispatch, logKey])
 
   const log = useSelector(selectCurrentContestLog)
-  const qson = useMemo(() => log?.qson || {}, [log])
+  const qson = useMemo(() => log?.qson ?? {}, [log])
   const ref = useMemo(
     () => log?.qson?.common.refs && log?.qson.common.refs.find((ref) => ref.type === "contest"),
     [log]
   )
-  const qsos = useMemo(() => log?.qson?.qsos || [], [log])
+  const qsos = useMemo(() => log?.qson?.qsos ?? [], [log])
   // const overrides = useSelector(selectLogOverrides(log.key))
 
   // const contestRef = useMemo(() => qson?.common.refs && qson.common.refs.find((ref) => ref.type === "contest"), [qson])

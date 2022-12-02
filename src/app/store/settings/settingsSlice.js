@@ -20,6 +20,6 @@ export const settingsSlice = createSlice({
 
 export const { setPerCallSettings } = settingsSlice.actions
 
-export const selectPerCallSettings = (call) => (state) => state.settings.perCall[call] || { call }
+export const selectPerCallSettings = (call) => (state) => state.settings.perCall[call] ?? { call }
 
 export default settingsSlice.reducer

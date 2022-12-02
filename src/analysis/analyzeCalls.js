@@ -8,10 +8,10 @@ const KEYS = [
 
 export default function analyzeCallsigns(qso, options, results, scratchpad) {
   for (const [totalKey, valueKey] of KEYS) {
-    results[totalKey] = results[totalKey] || {}
+    results[totalKey] = results[totalKey] ?? {}
 
     if (qso.their[valueKey]) {
-      results[totalKey][qso.their[valueKey]] = (results[totalKey][qso.their[valueKey]] || 0) + 1
+      results[totalKey][qso.their[valueKey]] = (results[totalKey][qso.their[valueKey]] ?? 0) + 1
     }
   }
 

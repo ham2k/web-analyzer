@@ -50,12 +50,12 @@ export function AnalysisPage() {
   }, [dispatch, logKey])
 
   const log = useSelector(selectCurrentContestLog)
-  const qson = useMemo(() => log?.qson || {}, [log])
+  const qson = useMemo(() => log?.qson ?? {}, [log])
   const ref = useMemo(
     () => log?.qson?.common.refs && log?.qson.common.refs.find((ref) => ref.type === "contest"),
     [log]
   )
-  const qsos = useMemo(() => log?.qson?.qsos || [], [log])
+  const qsos = useMemo(() => log?.qson?.qsos ?? [], [log])
   const overrides = useSelector(selectLogOverrides(logKey))
 
   const contestRef = useMemo(
@@ -113,7 +113,7 @@ export function AnalysisPage() {
         {fmtMinutesAsHM(analysis.times.activeMinutes)} {" at "}
         <b>{fmtOneDecimal((qsos.length / analysis.times.activeMinutes) * 60)} QSO/h</b>. &nbsp;&nbsp;&nbsp; Claimed
         Score: {fmtInteger(contestRef?.claimedScore)} - Calculated Score:{" "}
-        {fmtInteger(contest?.scoringResults?.total || 0)}
+        {fmtInteger(contest?.scoringResults?.total ?? 0)}
       </p>
 
       <LogSettings log={log} overrides={overrides} contestRef={contestRef} />

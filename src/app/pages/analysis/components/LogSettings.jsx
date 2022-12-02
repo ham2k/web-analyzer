@@ -39,8 +39,8 @@ export function LogSettings({ log, overrides, contestRef }) {
             label="Grid Location"
             variant="standard"
             InputLabelProps={{ shrink: true }}
-            placeholder={contestRef.grid || "123"}
-            value={overrides.grid || ""}
+            placeholder={contestRef.grid ?? "123"}
+            value={overrides.grid ?? ""}
             onChange={handleGridChange}
           />
         </Grid>
@@ -51,7 +51,7 @@ export function LogSettings({ log, overrides, contestRef }) {
             options={LuxonTimezones}
             getOptionLabel={(option) => option.replace(/_/g, " ").replace(/\//g, ": ").replace("Etc: ", "")}
             isOptionEqualToValue={(option, value) => option === value}
-            value={settings.tz || null}
+            value={settings.tz ?? null}
             onChange={handleTZChange}
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Timezone" variant="standard" />}

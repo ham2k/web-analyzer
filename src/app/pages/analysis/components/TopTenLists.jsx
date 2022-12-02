@@ -6,7 +6,7 @@ import { parseCallsign } from "@ham2k/data/callsigns"
 import { annotateFromCountryFile } from "@ham2k/data/country-file"
 
 export function TopTenEntities({ dxcc }) {
-  const sorted = useMemo(() => Object.entries(dxcc || {}).sort((a, b) => b[1] - a[1]), [dxcc])
+  const sorted = useMemo(() => Object.entries(dxcc ?? {}).sort((a, b) => b[1] - a[1]), [dxcc])
 
   if (dxcc) {
     return (
@@ -32,7 +32,7 @@ export function TopTenEntities({ dxcc }) {
 }
 
 export function TopTenContinents({ continents }) {
-  const sorted = useMemo(() => Object.entries(continents || {}).sort((a, b) => b[1] - a[1]), [continents])
+  const sorted = useMemo(() => Object.entries(continents ?? {}).sort((a, b) => b[1] - a[1]), [continents])
 
   if (continents) {
     return (
@@ -57,7 +57,7 @@ export function TopTenContinents({ continents }) {
 }
 
 export function TopTenCallsigns({ calls }) {
-  const sorted = useMemo(() => Object.entries(calls || {}).sort((a, b) => b[1] - a[1]), [calls])
+  const sorted = useMemo(() => Object.entries(calls ?? {}).sort((a, b) => b[1] - a[1]), [calls])
 
   if (calls) {
     return (
@@ -86,7 +86,7 @@ export function TopTenCallsigns({ calls }) {
 }
 
 export function TopTenCQZones({ cqZones }) {
-  const sorted = useMemo(() => Object.entries(cqZones || {}).sort((a, b) => b[1] - a[1]), [cqZones])
+  const sorted = useMemo(() => Object.entries(cqZones ?? {}).sort((a, b) => b[1] - a[1]), [cqZones])
 
   if (cqZones) {
     return (
@@ -113,7 +113,7 @@ export function TopTenCQZones({ cqZones }) {
 }
 
 export function TopTenITUZones({ ituZones }) {
-  const sorted = useMemo(() => Object.entries(ituZones || {}).sort((a, b) => b[1] - a[1]), [ituZones])
+  const sorted = useMemo(() => Object.entries(ituZones ?? {}).sort((a, b) => b[1] - a[1]), [ituZones])
 
   if (ituZones) {
     return (

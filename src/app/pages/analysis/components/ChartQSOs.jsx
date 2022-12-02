@@ -12,12 +12,12 @@ export function ChartQSOs({ analysis, contest, qson, contestRef, overrides }) {
 
   const grid = new Maidenhead()
   try {
-    grid.locator = overrides?.grid || contestRef?.grid
+    grid.locator = overrides?.grid ?? contestRef?.grid
   } catch (error) {
     // Ignore grid location
   }
 
-  if (!analysis?.qsos?.bins || !analysis.rates?.all) {
+  if (!analysis?.qsos?.bins ?? !analysis.rates?.all) {
     return null
   }
   const bins = Object.values(analysis.qsos.bins)
@@ -34,7 +34,7 @@ export function ChartQSOs({ analysis, contest, qson, contestRef, overrides }) {
     startMillis += 15 * 60 * 1000
   }
 
-  const maxQSOs = Math.max(...bins.map((bin) => bin.qsos.all || 0))
+  const maxQSOs = Math.max(...bins.map((bin) => bin.qsos.all ?? 0))
 
   const series = [
     {

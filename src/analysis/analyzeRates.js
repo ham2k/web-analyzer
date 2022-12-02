@@ -1,15 +1,15 @@
 export default function analyzeRates(qso, options, results, scratchpad) {
-  scratchpad.rollingTimes = scratchpad.rollingTimes || {}
+  scratchpad.rollingTimes = scratchpad.rollingTimes ?? {}
 
   options.rollingCount = 10
 
-  results.all = results.all || []
-  results[qso.band] = results[qso.band] || []
+  results.all = results.all ?? []
+  results[qso.band] = results[qso.band] ?? []
 
   const keys = ["all", qso.band]
   keys.forEach((key) => {
-    scratchpad.rollingTimes[key] = scratchpad.rollingTimes[key] || []
-    results[key] = results[key] || []
+    scratchpad.rollingTimes[key] = scratchpad.rollingTimes[key] ?? []
+    results[key] = results[key] ?? []
 
     scratchpad.rollingTimes[key].push(qso.startMillis)
 

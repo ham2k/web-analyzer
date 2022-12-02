@@ -36,8 +36,8 @@ const styles = {
 export function LogSummary({ qson, analysis, contest }) {
   const bands = contest.bands
 
-  const multNames = contest.multipliers || []
-  const contestSummary = contest.scoringResults?.summary || {}
+  const multNames = contest.multipliers ?? []
+  const contestSummary = contest.scoringResults?.summary ?? {}
 
   return (
     <Box sx={styles.root}>
@@ -89,7 +89,7 @@ export function LogSummary({ qson, analysis, contest }) {
               <td className="perqso">
                 {(contestSummary.points &&
                   contestSummary.points[band] > 0 &&
-                  fmtOneDecimal(contestSummary.points[band] / contestSummary.qsos[band])) ||
+                  fmtOneDecimal(contestSummary.points[band] / contestSummary.qsos[band])) ??
                   "-"}
               </td>
               {contestSummary && multNames[0] && (
@@ -120,20 +120,20 @@ export function LogSummary({ qson, analysis, contest }) {
                     : "-"}
                 </td>
               )}
-              <td className="dupes">{(contestSummary.dupes && contestSummary.dupes[band]) || "-"}</td>
+              <td className="dupes">{(contestSummary.dupes && contestSummary.dupes[band]) ?? "-"}</td>
               <td className="percent">
                 {contestSummary.dupes && contestSummary.dupes[band] > 0
                   ? `${fmtInteger((contestSummary.dupes[band] / contestSummary.dupes.all) * 100)}%`
                   : "-"}
               </td>
-              <td className="invalid">{(contestSummary.invalid && contestSummary.invalid[band]) || "-"}</td>
+              <td className="invalid">{(contestSummary.invalid && contestSummary.invalid[band]) ?? "-"}</td>
               <td className="percent">
                 {contestSummary.invalid && contestSummary.invalid[band] > 0
                   ? `${fmtInteger((contestSummary.invalid[band] / contestSummary.invalid.all) * 100)}%`
                   : "-"}
               </td>
               <td className="score">
-                {(contestSummary && contestSummary.total[band] && fmtInteger(contestSummary.total[band])) || "-"}
+                {(contestSummary && contestSummary.total[band] && fmtInteger(contestSummary.total[band])) ?? "-"}
               </td>
               <td className="percent">
                 {contestSummary.total && contestSummary.total[band] > 0
@@ -144,7 +144,7 @@ export function LogSummary({ qson, analysis, contest }) {
           ))}
           <tr className="totals">
             <td className="band">TOTAL</td>
-            <td className="qsos">{fmtInteger(analysis.qsos.totals.all) || "-"}</td>
+            <td className="qsos">{fmtInteger(analysis.qsos.totals.all) ?? "-"}</td>
             <td className="percent"></td>
             <td className="points">{contestSummary.points ? fmtInteger(contestSummary.points.all) : "-"}</td>
             <td className="percent"></td>

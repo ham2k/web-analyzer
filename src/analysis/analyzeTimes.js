@@ -1,6 +1,6 @@
 export default function analyzeTimes(qso, options, results, scratchpad) {
-  options.minimumBreak = options.minimumBreak || 15
-  results.periods = results.periods || []
+  options.minimumBreak = options.minimumBreak ?? 15
+  results.periods = results.periods ?? []
 
   const lastPeriod = results.periods[results.periods.length - 1]
 

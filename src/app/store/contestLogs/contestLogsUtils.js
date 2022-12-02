@@ -1,5 +1,5 @@
 export function guessStartOfContest({ qson, contestInfo }) {
-  return (contestInfo && contestInfo.start) || (qson.qsos[0] && qson.qsos[0].start)
+  return (contestInfo && contestInfo.start) ?? (qson.qsos[0] && qson.qsos[0].start)
 }
 
 export function generateContestLogKey({ qson, contestInfo, contestRef }) {
