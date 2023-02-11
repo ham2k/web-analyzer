@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { cabrilloToQSON } from "@ham2k/qson/cabrillo"
-import { parseCallsign } from "@ham2k/data/callsigns"
-import { annotateFromCountryFile } from "@ham2k/data/country-file"
-import { useBuiltinCountryFile } from "@ham2k/data/country-file/builtinData"
+import { cabrilloToQSON } from "@ham2k/qson-cabrillo"
+import { parseCallsign } from "@ham2k/data-callsigns"
+import { annotateFromCountryFile } from "@ham2k/data-country-file"
+import { useBuiltinCountryFile } from "@ham2k/data-country-file/builtinData"
 
 // Not sure why ESLint thinks this is a hook 🤷
 useBuiltinCountryFile() // eslint-disable-line react-hooks/rules-of-hooks

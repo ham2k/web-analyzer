@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo } from "react"
-import { CONTINENTS, ENTITIES } from "@ham2k/data/dxcc"
-import { CQZONES } from "@ham2k/data/cqzones"
-import { parseCallsign } from "@ham2k/data/callsigns"
-import { annotateFromCountryFile } from "@ham2k/data/country-file"
+import { CONTINENTS, ENTITIES } from "@ham2k/data-dxcc"
+import { CQZONES } from "@ham2k/data-cqzones"
+import { parseCallsign } from "@ham2k/data-callsigns"
+import { annotateFromCountryFile } from "@ham2k/data-country-file"
 
 export function TopTenEntities({ dxcc }) {
   const sorted = useMemo(() => Object.entries(dxcc ?? {}).sort((a, b) => b[1] - a[1]), [dxcc])
