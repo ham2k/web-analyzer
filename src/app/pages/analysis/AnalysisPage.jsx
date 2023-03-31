@@ -7,8 +7,8 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 
 import { useNavigate, useParams } from "react-router-dom"
 
-import { findContestInfoForId } from "@ham2k/data-contests"
-import { fmtDateMonthYear, fmtMinutesAsHM, fmtInteger, fmtOneDecimal } from "@ham2k/util-format"
+import { findContestInfoForId } from "@ham2k/data/contests"
+import { fmtDateMonthYear, fmtMinutesAsHM, fmtInteger, fmtOneDecimal } from "@ham2k/util/format"
 
 import analyzeAll from "../../../analysis/analyzer"
 

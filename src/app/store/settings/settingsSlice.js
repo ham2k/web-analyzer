@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { parseCallsign } from "@ham2k/data-callsigns"
+import { parseCallsign } from "@ham2k/data/callsigns"
 
 const initialState = {
   perCall: {},
