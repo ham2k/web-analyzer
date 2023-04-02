@@ -2,7 +2,7 @@ import { Link, Typography } from "@mui/material"
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { fmtDateMonthYear } from "@ham2k/util/format"
+import { fmtDateMonthYear } from "@ham2k/lib-format-tools"
 import { fetchContestLogList, selectContestLogList } from "../../../store/contestLogs"
 import { LogLoader } from "./LogLoader"
 

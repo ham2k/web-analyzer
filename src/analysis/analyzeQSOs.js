@@ -1,4 +1,4 @@
-import { findContestInfoForId } from "@ham2k/data/contests"
+import { findContestInfoForId } from "@ham2k/lib-contests"
 
 export default function analyzeQSOs(qso, options, results, scratchpad) {
   scratchpad.contestInfo = scratchpad.contestInfo ?? findContestInfoForId(scratchpad.contest)

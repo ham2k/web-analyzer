@@ -1,7 +1,7 @@
 import analyzeAll from "./analyzer"
 import fs from "fs"
 import path from "path"
-import { cabrilloToQSON } from "@ham2k/qson/cabrillo"
+import { cabrilloToQSON } from "@ham2k/lib-qson-cabrillo"
 
 const cabrillo = fs.readFileSync(
   path.join(__dirname, "../../../../libs/qson/cabrillo/src/lib/samples/arrldx-cw.log"),

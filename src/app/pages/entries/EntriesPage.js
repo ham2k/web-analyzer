@@ -7,12 +7,12 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 
 import { useNavigate, useParams } from "react-router-dom"
 
-import { findContestInfoForId } from "@ham2k/data/contests"
-import { fmtDateMonthYear, fmtContestTimestampZulu, fmtInteger } from "@ham2k/util/format"
+import { findContestInfoForId } from "@ham2k/lib-contests"
+import { fmtDateMonthYear, fmtContestTimestampZulu, fmtInteger } from "@ham2k/lib-format-tools"
 
 import { resetCurrentContestLog, selectCurrentContestLog, setCurrentContestLog } from "../../store/contestLogs"
 import classNames from "classnames"
-import { camelCaseToTitleCase } from "@ham2k/util/format"
+import { camelCaseToTitleCase } from "@ham2k/lib-format-tools"
 import { Box } from "@mui/system"
 
 const styles = {

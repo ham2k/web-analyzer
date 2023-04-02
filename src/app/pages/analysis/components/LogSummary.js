@@ -1,6 +1,6 @@
 import React from "react"
 import { Box, Typography } from "@mui/material"
-import { fmtInteger, fmtOneDecimal } from "@ham2k/util/format"
+import { fmtInteger, fmtOneDecimal } from "@ham2k/lib-format-tools"
 
 const styles = {
   root: {

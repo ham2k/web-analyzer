@@ -1,5 +1,5 @@
 import React from "react"
-import { fmtContestTimestampZulu } from "@ham2k/util/format"
+import { fmtContestTimestampZulu } from "@ham2k/lib-format-tools"
 import ApexChart from "react-apexcharts"
 import SunCalc from "suncalc"
 import Maidenhead from "maidenhead"

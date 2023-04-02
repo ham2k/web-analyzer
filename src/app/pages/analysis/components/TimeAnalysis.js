@@ -3,7 +3,7 @@ import React, { useMemo } from "react"
 import Maidenhead from "maidenhead"
 import SunCalc from "suncalc"
 
-import { fmtContestTimestampZulu, fmtDateTime, fmtMinutesAsHM, fmtInteger, fmtPercent } from "@ham2k/util/format"
+import { fmtContestTimestampZulu, fmtDateTime, fmtMinutesAsHM, fmtInteger, fmtPercent } from "@ham2k/lib-format-tools"
 
 export function TimeAnalysis({ qson, analysis, contest, contestRef, overrides }) {
   const contestPeriodInfo = useMemo(() => {
